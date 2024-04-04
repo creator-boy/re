@@ -27,18 +27,18 @@ bot = Client("bot",
              api_hash= "aee939a0fddb972d443b8e98c383ea1f")
 
 
-@bot.on_message(filters.command(["start"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["start"])
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"HELLO I AM TXT DOWNLOADER BOT MADE BY GEC SERVER [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /server")
 
 
-@bot.on_message(filters.command("stop") & filters.user(ADMINS))
+@bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
     await m.reply_text("**STOPPED**🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["SERVER"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["SERVER"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     input: Message = await bot.listen(editable.chat.id)
